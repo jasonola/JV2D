@@ -47,7 +47,9 @@ d3.tsv("valeurs_nutritives.tsv", function(d){
     
     let button = document.createElement("button")
     button.addEventListener("click", function(){
-        //choiceWrapper.removeChild("div")
+        while (choiceWrapper.firstChild) {
+            choiceWrapper.firstChild.remove()
+        }
         show_mult_img(randomThreeNum(0,donnees.length))})
     document.body.appendChild(button)
   
