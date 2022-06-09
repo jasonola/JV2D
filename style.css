@@ -1,7 +1,9 @@
-body{
+div.page-bg{
     background-image: url("Cantine1.jpg");
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center;
+    filter: blur(8px);
 }
 
 div{
@@ -18,3 +20,4 @@ img{
 h1{
     font-family: 'Courier New', Courier, monospace;
 }
+
