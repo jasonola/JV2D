@@ -1,3 +1,9 @@
+body{
+    background-image: url("Cantine1.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 div{
     display: grid;
     grid-template-columns: auto auto auto;
