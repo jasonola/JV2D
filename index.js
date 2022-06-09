@@ -10,16 +10,6 @@ d3.tsv("valeurs_nutritives.tsv", function(d){
 
     }
 }).then(donnees => {
-    // let show_img = function(index){
-    //     let div = document.createElement("div")
-    //     let img = document.createElement("img")
-    //     img.src = donnees[index].image
-    //     img.width = 300
-    //     img.height = 300
-    //     console.log(choiceWrapper)
-    //     choiceWrapper.appendChild(div)
-    //     div.appendChild(img)
-    // }
 
     let choiceWrapper = document.querySelector(".choiceWrapper")
 
