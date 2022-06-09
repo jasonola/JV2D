@@ -17,14 +17,14 @@ d3.tsv("valeurs_nutritives.tsv", function(d){
         //choiceWrapper.removeChild("img")
         for (let i = 0; i < array.length; i++) {
             //show_img(array[i])
-            let div = document.createElement("div")
-            div.setAttribute("class","card")
+            let card = document.createElement("div")
+            card.setAttribute("class","card")
             let img = document.createElement("img")
             img.src = donnees[array[i]].image
             img.width = 300
             img.height = 300
-            choiceWrapper.appendChild(div)
-            div.appendChild(img)    
+            choiceWrapper.appendChild(card)
+            card.appendChild(img)    
         }
     }
     function randomThreeNum(min, max) { 
