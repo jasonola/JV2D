@@ -1,11 +1,11 @@
-div.choiceWrapper{
+.choiceWrapper{
     display: grid;
     grid-template-columns: auto auto auto;
     padding: 30px;
     justify-items: center;
 }
 
-img{
+.food{
     border-radius: 5%;
     box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
 }
@@ -13,6 +13,35 @@ img{
 h1{
     font-family: 'Courier New', Courier, monospace;
 }
-div.game{
+.game{
+    margin: 30px;
     padding: 50px;
+    background-color: bisque;
+    height: 500px;
+}
+
+.card{
+    background-color: white;
+    border-radius: 5%;
+    height: 0%;
+}
+
+.card:hover{
+    height: 100%;
+}
+
+.info{
+    display: none;
+}
+
+#card0:hover  #info0 {
+    display: block;
+}
+
+#card1:hover  #info1 {
+    display: block;
+}
+
+#card2:hover  #info2 {
+    display: block;
 }

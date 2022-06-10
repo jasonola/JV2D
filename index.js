@@ -10,21 +10,32 @@ d3.tsv("valeurs_nutritives.tsv", function(d){
 
     }
 }).then(donnees => {
-
+    let game = document.querySelector(".game")
     let choiceWrapper = document.querySelector(".choiceWrapper")
 
     let show_mult_img = function(array){
-        //choiceWrapper.removeChild("img")
         for (let i = 0; i < array.length; i++) {
-            //show_img(array[i])
             let card = document.createElement("div")
             card.setAttribute("class","card")
+            card.setAttribute("id", `card${i}`)
             let img = document.createElement("img")
+            img.setAttribute("class","food")
             img.src = donnees[array[i]].image
             img.width = 300
             img.height = 300
+            let info = document.createElement("p")
+            info.setAttribute("class","info")
+            info.setAttribute("id", `info${i}`)
+            info.innerHTML = "test"
+            img.addEventListener("click", function(){
+                while (choiceWrapper.firstChild) {
+                    choiceWrapper.firstChild.remove()
+                }
+                show_mult_img(randomThreeNum(0,donnees.length))
+            })
             choiceWrapper.appendChild(card)
             card.appendChild(img)    
+            card.appendChild(info)
         }
     }
     function randomThreeNum(min, max) { 
@@ -36,11 +47,14 @@ d3.tsv("valeurs_nutritives.tsv", function(d){
         } 
     
     let button = document.createElement("button")
+    button.innerHTML = "Start game !"
     button.addEventListener("click", function(){
         while (choiceWrapper.firstChild) {
             choiceWrapper.firstChild.remove()
         }
-        show_mult_img(randomThreeNum(0,donnees.length))})
-    document.body.appendChild(button)
+        show_mult_img(randomThreeNum(0,donnees.length))
+        button.style.display = "none"
+    })
+    game.appendChild(button)
   
 })
