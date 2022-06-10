@@ -33,24 +33,32 @@ d3.tsv("valeurs_nutritives.tsv", function(d){
             let nutScoreLab = document.createElement("span")
             let nutScoreWrapper = document.createElement("div")
             nutScoreWrapper.setAttribute("class", "nutScoreWrapper")
-            nutScoreWrapper.setAttribute("id", nutriments[i])
+            nutScore.setAttribute("id", nutriments[i])
             counterNut = 0
             nutScoreLab.innerHTML = `${nutriments[i]} : `
             nutScore.innerHTML = 50
             if(i == 3){
                 nutScore.innerHTML = 0
             }
-            console.log(nutScore)
             nutScoreWrapper.appendChild(nutScoreLab)
             nutScoreWrapper.appendChild(nutScore)
             score.appendChild(nutScoreWrapper)
             
             
         }
-        // let caloriesScore = document.createElement("p")
-        // let sodiumScore = document.createElement("p")
-        // let grasScore = document.createElement("p")
-        // let glucidesScore = document.createElement("p")
+
+        let caloriesScore = document.querySelector("#calories")
+        let sodiumScore = document.querySelector("#sodium")
+        let grasScore = document.querySelector("#gras")
+        let glucidesScore = document.querySelector("#glucides")
+        
+        console.log("bruh",caloriesScore);
+        console.log(sodiumScore);
+        console.log(grasScore);
+        console.log(glucidesScore);
+        console.log(score)
+        console.log(game)
+
         // counterCalories = 0
         // counterSodium = 0
         // counterGras = 0
@@ -124,7 +132,6 @@ d3.tsv("valeurs_nutritives.tsv", function(d){
                                 Matière grasse : ${data[i].gras} (g)<br>
                                 Glucides : ${data[i].glucides} (g)`   
                                 
-                                console.log(data[i])
                 // Comme on a maintenant 4 colonnes car 4 accompagnements, il faut changer la grid disposition
                 choiceWrapper.style.gridTemplateColumns = "auto auto auto auto"
                 choiceWrapper.appendChild(card)
@@ -137,7 +144,6 @@ d3.tsv("valeurs_nutritives.tsv", function(d){
                 })
                 card.appendChild(img)    
                 card.appendChild(info)
-                console.log(card)
             }
         }
         
