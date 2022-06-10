@@ -72,6 +72,11 @@ h1{
 
 }
 
+#card3:hover  #info3 {
+    display: block;
+
+}
+
 @keyframes fadein {
     from {
         opacity:0;

@@ -24,12 +24,13 @@ d3.tsv("valeurs_nutritives.tsv", function(d){
     }).then(donnees_acc => {
         console.log("donnees",donnees)
         console.log("donnees accompagnement",donnees_acc)
-        // Chercher les 2 balises HTML du index.html
+        
         let game = document.querySelector(".game")
-        let choiceWrapper = document.querySelector(".choiceWrapper")
+        
 
         // Fonction pour afficher plusieurs images en cartes avec leur comportement
-        let show_mult_img = function(array){
+        let show_menus = function(array){
+            let choiceWrapper = document.querySelector(".choiceWrapper")
             // Boucle pour itérer autant de fois que la taille du array en argument 
             //(Ici prévu 3 images, car c'est le return de randomThreeNum quon va prendre ici)
             for (let i = 0; i < array.length; i++) {
@@ -58,7 +59,7 @@ d3.tsv("valeurs_nutritives.tsv", function(d){
                     while (choiceWrapper.firstChild) {
                         choiceWrapper.firstChild.remove()
                     }
-                    show_mult_img(randomThreeNum(0,donnees.length))
+                    show_accomp(donnees_acc)
                 })
                 // Ajouter les balises sous les parents
                 choiceWrapper.appendChild(card)
@@ -66,6 +67,41 @@ d3.tsv("valeurs_nutritives.tsv", function(d){
                 card.appendChild(info)
             }
         }
+
+        let show_accomp = function(data){
+            let choiceWrapper = document.querySelector(".choiceWrapper")
+            for (let i = 0; i < data.length; i++) {
+                let card = document.createElement("div")
+                card.setAttribute("class","card")
+                card.setAttribute("id", `card${i}`)
+                // Création de l'image
+                let img = document.createElement("img")
+                img.setAttribute("class","food")
+                img.src = data[i].image
+                img.width = 200
+                img.height = 200
+                // Création du texte sous l'image pour les infos
+                let info = document.createElement("p")
+                info.setAttribute("class","info")
+                info.setAttribute("id", `info${i}`)
+                info.innerHTML = "test"
+                console.log(data[i])
+                // Comme on a maintenant 4 colonnes car 4 accompagnements, il faut changer la grid disposition
+                choiceWrapper.style.gridTemplateColumns = "auto auto auto auto"
+                choiceWrapper.appendChild(card)
+                img.addEventListener("click", function(){
+                    while (choiceWrapper.firstChild) {
+                        choiceWrapper.firstChild.remove()
+                    }
+                    
+                    show_menus(randomThreeNum(0,donnees.length))
+                })
+                card.appendChild(img)    
+                card.appendChild(info)
+                console.log(card)
+            }
+        }
+        
         // Fonction de selection aléatoire de 3 chiffres
         let randomThreeNum = function (min, max) { 
             let n = []; 
@@ -79,7 +115,7 @@ d3.tsv("valeurs_nutritives.tsv", function(d){
         let button = document.createElement("button")
         button.innerHTML = "Start game !"
         button.addEventListener("click", function(){
-            show_mult_img(randomThreeNum(0,donnees.length))
+            show_menus(randomThreeNum(0,donnees.length))
             button.style.display = "none"
         })
         let buttonWrapper = document.createElement("div")
