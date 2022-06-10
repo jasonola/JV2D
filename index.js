@@ -49,12 +49,12 @@ d3.tsv("valeurs_nutritives.tsv", function(d){
     let button = document.createElement("button")
     button.innerHTML = "Start game !"
     button.addEventListener("click", function(){
-        while (choiceWrapper.firstChild) {
-            choiceWrapper.firstChild.remove()
-        }
         show_mult_img(randomThreeNum(0,donnees.length))
         button.style.display = "none"
     })
-    game.appendChild(button)
+    let buttonWrapper = document.createElement("div")
+    buttonWrapper.setAttribute("class", "buttonWrapper")
+    game.appendChild(buttonWrapper)
+    buttonWrapper.appendChild(button)
   
 })
