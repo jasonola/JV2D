@@ -27,6 +27,9 @@ d3.tsv("valeurs_nutritives.tsv", function(d){
         let game = document.querySelector(".game")
         let score = document.createElement("div")
         score.setAttribute("class","score")
+
+        game.insertBefore(score, game.firstChild.nextSibling.nextSibling)
+
         let nutriments = donnees_acc.columns.slice(1,5)
         for (let i = 0; i < nutriments.length; i++) {
             let nutScore = document.createElement("span")
@@ -51,21 +54,20 @@ d3.tsv("valeurs_nutritives.tsv", function(d){
         let sodiumScore = document.querySelector("#sodium")
         let grasScore = document.querySelector("#gras")
         let glucidesScore = document.querySelector("#glucides")
-        
+        let nutScoreWrapper = document.querySelector(".nutScoreWrapper")
+
+        counterCalories = 0
+        counterSodium = 50
+        counterGras = 50
+        counterGlucide = 50
+
         console.log("bruh",caloriesScore);
         console.log(sodiumScore);
         console.log(grasScore);
         console.log(glucidesScore);
+        console.log(nutScoreWrapper)
         console.log(score)
         console.log(game)
-
-        // counterCalories = 0
-        // counterSodium = 0
-        // counterGras = 0
-        // counterGlucides = 0
-        // caloriesScore.innerHTML = 0
-        // score.appendChild(caloriesScore)
-        game.insertBefore(score, game.firstChild.nextSibling.nextSibling)
 
         // Fonction pour afficher plusieurs images en cartes avec leur comportement
         let show_menus = function(array){
@@ -99,9 +101,8 @@ d3.tsv("valeurs_nutritives.tsv", function(d){
                     while (choiceWrapper.firstChild) {
                         choiceWrapper.firstChild.remove()
                     }
-                    
-                    // counterCalories += donnees[array[i]].calories
-                    // caloriesScore.innerHTML = counterCalories
+                    counterCalories += donnees[array[i]].calories
+                    caloriesScore.innerHTML = counterCalories
                     show_accomp(donnees_acc)
                 })
                 // Ajouter les balises sous les parents
@@ -169,4 +170,5 @@ d3.tsv("valeurs_nutritives.tsv", function(d){
         game.appendChild(buttonWrapper)
         buttonWrapper.appendChild(button)
   
+    
 })})
