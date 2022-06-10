@@ -1,11 +1,11 @@
 // Importer les 2 jeux de données
 d3.tsv("valeurs_nutritives.tsv", function(d){
     return {
-        repas : d["titre bouffe"],
-        sodium : +d["sodium (mg)"],
-        gras : +d["matière grasse (g)"],
-        glucides : +d["glucides (g)"],
-        estPtitDej : +d["petit dej"],
+        repas : d["titre"],
+        sodium : +d["sodium"],
+        gras : +d["gras"],
+        glucides : +d["glucides"],
+        estPtitDej : +d["petit_dej"],
         estRepas : +d["repas"],
         calories : +d["calories"],
         image : d["image"]
@@ -15,18 +15,49 @@ d3.tsv("valeurs_nutritives.tsv", function(d){
     d3.tsv("accompagnant.tsv", function(d){
         return {
             accompagnant : d["accompagnant"],
-            sodium : +d["sodium(mg)"],
-            gras : +d["matière grasse(g)"],
-            glucides : +d["glucides(g)"],
+            sodium : +d["sodium"],
+            gras : +d["gras"],
+            glucides : +d["glucides"],
+            calories : +d["calories"],
             image : d["image"]
     
         }
     }).then(donnees_acc => {
-        console.log("donnees",donnees)
-        console.log("donnees accompagnement",donnees_acc)
         
         let game = document.querySelector(".game")
-        
+        let score = document.createElement("div")
+        score.setAttribute("class","score")
+        let nutriments = donnees_acc.columns.slice(1,5)
+        for (let i = 0; i < nutriments.length; i++) {
+            let nutScore = document.createElement("span")
+            let nutScoreLab = document.createElement("span")
+            let nutScoreWrapper = document.createElement("div")
+            nutScoreWrapper.setAttribute("class", "nutScoreWrapper")
+            nutScoreWrapper.setAttribute("id", nutriments[i])
+            counterNut = 0
+            nutScoreLab.innerHTML = `${nutriments[i]} : `
+            nutScore.innerHTML = 50
+            if(i == 3){
+                nutScore.innerHTML = 0
+            }
+            console.log(nutScore)
+            nutScoreWrapper.appendChild(nutScoreLab)
+            nutScoreWrapper.appendChild(nutScore)
+            score.appendChild(nutScoreWrapper)
+            
+            
+        }
+        // let caloriesScore = document.createElement("p")
+        // let sodiumScore = document.createElement("p")
+        // let grasScore = document.createElement("p")
+        // let glucidesScore = document.createElement("p")
+        // counterCalories = 0
+        // counterSodium = 0
+        // counterGras = 0
+        // counterGlucides = 0
+        // caloriesScore.innerHTML = 0
+        // score.appendChild(caloriesScore)
+        game.insertBefore(score, game.firstChild.nextSibling.nextSibling)
 
         // Fonction pour afficher plusieurs images en cartes avec leur comportement
         let show_menus = function(array){
@@ -52,13 +83,17 @@ d3.tsv("valeurs_nutritives.tsv", function(d){
                 info.innerHTML = `Menu : ${donnees[array[i]].repas}<br>
                                 Sodium : ${donnees[array[i]].sodium} (mg)<br>
                                 Matière grasse : ${donnees[array[i]].gras} (g)<br>
-                                Glucides : ${donnees[array[i]].glucides} (g)`
+                                Glucides : ${donnees[array[i]].glucides} (g)<br>
+                                Calories : ${donnees[array[i]].calories}`
                 // On ajoute un evenement au cas ou on clique, on efface le contenu précédent s'il y en avait 
                 // et on rajoute 3 images denouveau
                 img.addEventListener("click", function(){
                     while (choiceWrapper.firstChild) {
                         choiceWrapper.firstChild.remove()
                     }
+                    
+                    // counterCalories += donnees[array[i]].calories
+                    // caloriesScore.innerHTML = counterCalories
                     show_accomp(donnees_acc)
                 })
                 // Ajouter les balises sous les parents
@@ -78,14 +113,18 @@ d3.tsv("valeurs_nutritives.tsv", function(d){
                 let img = document.createElement("img")
                 img.setAttribute("class","food")
                 img.src = data[i].image
-                img.width = 200
-                img.height = 200
+                img.width = 250
+                img.height = 250
                 // Création du texte sous l'image pour les infos
                 let info = document.createElement("p")
                 info.setAttribute("class","info")
                 info.setAttribute("id", `info${i}`)
-                info.innerHTML = "test"
-                console.log(data[i])
+                info.innerHTML = `Menu : ${data[i].accompagnant}<br>
+                                Sodium : ${data[i].sodium} (mg)<br>
+                                Matière grasse : ${data[i].gras} (g)<br>
+                                Glucides : ${data[i].glucides} (g)`   
+                                
+                                console.log(data[i])
                 // Comme on a maintenant 4 colonnes car 4 accompagnements, il faut changer la grid disposition
                 choiceWrapper.style.gridTemplateColumns = "auto auto auto auto"
                 choiceWrapper.appendChild(card)
@@ -116,6 +155,7 @@ d3.tsv("valeurs_nutritives.tsv", function(d){
         button.innerHTML = "Start game !"
         button.addEventListener("click", function(){
             show_menus(randomThreeNum(0,donnees.length))
+            //on supprime le bouton apres le click
             button.style.display = "none"
         })
         let buttonWrapper = document.createElement("div")

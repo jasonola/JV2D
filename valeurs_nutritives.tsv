@@ -1,4 +1,4 @@
-titre bouffe	sodium (mg)	glucides (g)	matière grasse (g)	calories	petit dej	repas	image	pts sodium	pts glucides	pts matière grasse	pts calories
+titre	sodium	glucides	gras	calories	petit_dej	repas	image	pts_sodium	pts_glucides	pts_gras	pts_calories
 Pain doré	552	35.2	15.5	335	1	0	https://img.cuisineaz.com/610x610/2018-05-31/i140246-pain-perdu-maison.jpeg	-2	-5	9	-4
 Minestrone	775	46.2	2.5	274	0	1	https://cocinarrecetasdepostres.net/wp-content/uploads/2020/03/Receta-de-Minestrone-de-olla-de-cocci%C3%B3n-lenta-Sabor.jpg	2	-3	-5	-4
 Côte de porc au four	693	19.5	14.1	290	0	1	https://img.cuisineaz.com/660x660/2017/02/06/i120444-cote-de-porc-au-miel-au-four.jpeg	1	-5	8	-4

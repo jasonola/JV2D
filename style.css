@@ -8,6 +8,20 @@ button{
     width: 100px;
 }
 
+.score{
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    padding: 30px;
+    justify-items: center;
+}
+
+.nutScoreWrapper{
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.nutScoreWrapper::first-letter{
+    text-transform: capitalize;
+}
 .choiceWrapper{
     display: grid;
     grid-template-columns: auto auto auto;
@@ -29,7 +43,7 @@ h1{
     margin: 30px;
     padding: 50px;
     background-color: bisque;
-    height: 600px;
+    height: 700px;
     border-style: solid;
 }
 
