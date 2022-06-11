@@ -8,7 +8,10 @@ d3.tsv("valeurs_nutritives.tsv", function(d){
         estPtitDej : +d["petit_dej"],
         estRepas : +d["repas"],
         calories : +d["calories"],
-        image : d["image"]
+        image : d["image"],
+        pts_sodium : +d["sodium"],
+        pts_gras : +d["gras"],
+        pts_glucides : +d["glucides"]
 
     }
 }).then(donnees => {
