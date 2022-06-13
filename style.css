@@ -96,6 +96,10 @@ h1{
 
 }
 
+.swal2-popup {
+    font-family: 'Courier New', Courier, monospace;
+  }
+
 @keyframes fadein {
     from {
         opacity:0;
