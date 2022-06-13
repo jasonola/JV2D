@@ -26,12 +26,19 @@ d3.tsv("valeurs_nutritives.tsv", function(d){
     
         }
     }).then(donnees_acc => {
-        
-        let game = document.querySelector(".game")
-        let score = document.createElement("div")
-        score.setAttribute("class","score")
 
-        game.insertBefore(score, game.firstChild.nextSibling.nextSibling)
+        counterCalories = 0
+        counterSodium = 50
+        counterGras = 50
+        counterGlucide = 50
+
+        counterPeriodeJour = 0
+        counterJour = 0
+
+        let game = document.querySelector(".game")
+        let score = document.querySelector(".score")
+        let periode = document.querySelector(".periode")
+
 
         let nutriments = donnees_acc.columns.slice(1,5)
         for (let i = 0; i < nutriments.length; i++) {
@@ -58,19 +65,6 @@ d3.tsv("valeurs_nutritives.tsv", function(d){
         let grasScore = document.querySelector("#gras")
         let glucidesScore = document.querySelector("#glucides")
         let nutScoreWrapper = document.querySelector(".nutScoreWrapper")
-
-        counterCalories = 0
-        counterSodium = 50
-        counterGras = 50
-        counterGlucide = 50
-
-        console.log("bruh",caloriesScore);
-        console.log(sodiumScore);
-        console.log(grasScore);
-        console.log(glucidesScore);
-        console.log(nutScoreWrapper)
-        console.log(score)
-        console.log(game)
 
         // Fonction pour afficher plusieurs images en cartes avec leur comportement
         let show_menus = function(array){
@@ -106,6 +100,10 @@ d3.tsv("valeurs_nutritives.tsv", function(d){
                     }
                     counterCalories += donnees[array[i]].calories
                     caloriesScore.innerHTML = counterCalories
+                    
+                    console.log("counterPeriodeJour",counterPeriodeJour)
+                    console.log("counterJour",counterJour)
+
                     show_accomp(donnees_acc)
                 })
                 // Ajouter les balises sous les parents
@@ -143,7 +141,23 @@ d3.tsv("valeurs_nutritives.tsv", function(d){
                     while (choiceWrapper.firstChild) {
                         choiceWrapper.firstChild.remove()
                     }
-                    
+                    counterCalories += data[i].calories
+                    caloriesScore.innerHTML = counterCalories
+
+                    // utiliser le compteur de periode par jour pour faire les 3 repas et reinitialiser pour faire un nouveau jour
+                    if(counterPeriodeJour == 3){
+                        counterPeriodeJour = 1
+                        counterJour++
+                        caloriesScore.innerHTML = counterCalories
+
+                        alert(`Vous avez mangé pour ${counterCalories} calories aujourd'hui !`)
+                        counterCalories = 0
+                        caloriesScore.innerHTML = counterCalories
+                    }else{
+                        counterPeriodeJour++
+                    }
+                    periode.innerHTML = `Jour ${counterJour}, periode ${counterPeriodeJour}`
+
                     show_menus(randomThreeNum(0,donnees.length))
                 })
                 card.appendChild(img)    
@@ -164,6 +178,9 @@ d3.tsv("valeurs_nutritives.tsv", function(d){
         let button = document.createElement("button")
         button.innerHTML = "Start game !"
         button.addEventListener("click", function(){
+            counterJour++
+            counterPeriodeJour++
+            periode.innerHTML = `Jour ${counterJour}, periode ${counterPeriodeJour}`
             show_menus(randomThreeNum(0,donnees.length))
             //on supprime le bouton apres le click
             button.style.display = "none"

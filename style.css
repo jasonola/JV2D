@@ -15,6 +15,11 @@ button{
     justify-items: center;
 }
 
+.periode{
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+}
+
 .nutScoreWrapper{
     font-family: 'Courier New', Courier, monospace;
 }
