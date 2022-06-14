@@ -71,6 +71,11 @@ d3.tsv("valeurs_nutritives.tsv", function(d){
         let glucidesScore = document.querySelector("#glucides")
         let nutScoreWrapper = document.querySelector(".nutScoreWrapper")
 
+        //ajouter musique
+        function playSound(soundfile){
+            document.getElementById("sound").innerHTML="<embed src=\""+soundfile+"\" hidden=\"true\" autostart=\"true\" loop=\"true\"/>";
+        }
+
         // Fonction pour afficher plusieurs images en cartes avec leur comportement
         let show_menus = function(array){
             
