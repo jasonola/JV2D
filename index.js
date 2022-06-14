@@ -72,7 +72,17 @@ d3.tsv("valeurs_nutritives.tsv", function(d){
         // Fonction pour afficher plusieurs images en cartes avec leur comportement
         let show_menus = function(array){
             
-           
+            if(counterGlucide <45){
+                Swal.fire({
+                    icon: 'error',
+                    title: 'GAME OVER',
+                    text: 'Pas assez de glucides',
+                    footer: '<a href=url("fr.wikipedia.org/wiki/Glucide")>Sheh</a>'
+                  }).then(function(){
+                    window.location.reload()
+                  })
+            }
+
             let choiceWrapper = document.querySelector(".choiceWrapper")
             // Boucle pour itérer autant de fois que la taille du array en argument 
             //(Ici prévu 3 images, car c'est le return de randomThreeNum quon va prendre ici)
@@ -106,16 +116,7 @@ d3.tsv("valeurs_nutritives.tsv", function(d){
                     while (choiceWrapper.firstChild) {
                         choiceWrapper.firstChild.remove()
                     }
-                    if(counterGlucide <45){
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'GAME OVER',
-                            text: 'Pas assez de glucides',
-                            footer: '<a href=url("fr.wikipedia.org/wiki/Glucide")>Sheh</a>'
-                          }).then(function(){
-                            window.location.reload()
-                          })
-                    }
+                    
                     counterCalories += donnees[array[i]].calories
                     caloriesScore.innerHTML = counterCalories
 
@@ -140,7 +141,16 @@ d3.tsv("valeurs_nutritives.tsv", function(d){
 
         let show_accomp = function(data){
 
-            
+            if(counterGlucide <45){
+                Swal.fire({
+                    icon: 'error',
+                    title: 'GAME OVER',
+                    text: 'Pas assez de glucides',
+                    footer: '<a href="fr.wikipedia.org/wiki/Glucide">Sheh</a>'
+                  }).then(function(){
+                    window.location.reload()
+                  })
+            }
 
             let choiceWrapper = document.querySelector(".choiceWrapper")
             for (let i = 0; i < data.length; i++) {
@@ -171,16 +181,7 @@ d3.tsv("valeurs_nutritives.tsv", function(d){
                     while (choiceWrapper.firstChild) {
                         choiceWrapper.firstChild.remove()
                     }
-                    if(counterGlucide <45){
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'GAME OVER',
-                            text: 'Pas assez de glucides',
-                            footer: '<a href="fr.wikipedia.org/wiki/Glucide">Sheh</a>'
-                          }).then(function(){
-                            window.location.reload()
-                          })
-                    }
+                    
                     
                     counterCalories += data[i].calories
                     caloriesScore.innerHTML = counterCalories
