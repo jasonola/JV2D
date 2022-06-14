@@ -71,6 +71,8 @@ d3.tsv("valeurs_nutritives.tsv", function(d){
 
         // Fonction pour afficher plusieurs images en cartes avec leur comportement
         let show_menus = function(array){
+            
+           
             let choiceWrapper = document.querySelector(".choiceWrapper")
             // Boucle pour itérer autant de fois que la taille du array en argument 
             //(Ici prévu 3 images, car c'est le return de randomThreeNum quon va prendre ici)
@@ -95,11 +97,24 @@ d3.tsv("valeurs_nutritives.tsv", function(d){
                                 Matière grasse : ${donnees[array[i]].gras} (g)<br>
                                 Glucides : ${donnees[array[i]].glucides} (g)<br>
                                 Calories : ${donnees[array[i]].calories}`
+
+                
                 // On ajoute un evenement au cas ou on clique, on efface le contenu précédent s'il y en avait 
                 // et on rajoute 3 images denouveau
+
                 img.addEventListener("click", function(){
                     while (choiceWrapper.firstChild) {
                         choiceWrapper.firstChild.remove()
+                    }
+                    if(counterGlucide <45){
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'GAME OVER',
+                            text: 'Pas assez de glucides',
+                            footer: '<a href=url("fr.wikipedia.org/wiki/Glucide")>Sheh</a>'
+                          }).then(function(){
+                            window.location.reload()
+                          })
                     }
                     counterCalories += donnees[array[i]].calories
                     caloriesScore.innerHTML = counterCalories
@@ -124,6 +139,9 @@ d3.tsv("valeurs_nutritives.tsv", function(d){
         }
 
         let show_accomp = function(data){
+
+            
+
             let choiceWrapper = document.querySelector(".choiceWrapper")
             for (let i = 0; i < data.length; i++) {
                 let card = document.createElement("div")
@@ -142,15 +160,28 @@ d3.tsv("valeurs_nutritives.tsv", function(d){
                 info.innerHTML = `Menu : ${data[i].accompagnant}<br>
                                 Sodium : ${data[i].sodium} (mg)<br>
                                 Matière grasse : ${data[i].gras} (g)<br>
-                                Glucides : ${data[i].glucides} (g)`   
+                                Glucides : ${data[i].glucides} (g) <br>
+                                Calories : ${data[i].calories}`   
                                 
                 // Comme on a maintenant 4 colonnes car 4 accompagnements, il faut changer la grid disposition
                 choiceWrapper.style.gridTemplateColumns = "auto auto auto auto"
                 choiceWrapper.appendChild(card)
+               
                 img.addEventListener("click", function(){
                     while (choiceWrapper.firstChild) {
                         choiceWrapper.firstChild.remove()
                     }
+                    if(counterGlucide <45){
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'GAME OVER',
+                            text: 'Pas assez de glucides',
+                            footer: '<a href="fr.wikipedia.org/wiki/Glucide">Sheh</a>'
+                          }).then(function(){
+                            window.location.reload()
+                          })
+                    }
+                    
                     counterCalories += data[i].calories
                     caloriesScore.innerHTML = counterCalories
 
@@ -161,18 +192,19 @@ d3.tsv("valeurs_nutritives.tsv", function(d){
                     counterGras += data[i].pts_gras
                     grasScore.innerHTML = counterGras
 
+                    
                     // utiliser le compteur de periode par jour pour faire les 3 repas et reinitialiser pour faire un nouveau jour
                     if(counterPeriodeJour == 3){
                         counterPeriodeJour = 1
                         counterJour++
                         caloriesScore.innerHTML = counterCalories
 
-                        //alert(`Vous avez mangé pour ${counterCalories} calories aujourd'hui !`)
+                        // Jolie alerte customisable quand on arrive a la fin de la journée
                         Swal.fire({
-                            title: `Vous avez mangé pour ${counterCalories} calories aujourd'hui !`,
+                            title: `Vous avez mangé pour <em>${counterCalories}</em> calories aujourd'hui !`,
                             width: 600,
                             padding: '3em',
-                            color: 'black',
+                            color: "black",
                             background: '#fff url(picnic.png)'
                           })
                         counterCalories = 0
