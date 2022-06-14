@@ -9,9 +9,9 @@ d3.tsv("valeurs_nutritives.tsv", function(d){
         estRepas : +d["repas"],
         calories : +d["calories"],
         image : d["image"],
-        pts_sodium : +d["sodium"],
-        pts_gras : +d["gras"],
-        pts_glucides : +d["glucides"]
+        pts_sodium : +d["pts_sodium"],
+        pts_gras : +d["pts_gras"],
+        pts_glucides : +d["pts_glucides"]
 
     }
 }).then(donnees => {
@@ -22,8 +22,11 @@ d3.tsv("valeurs_nutritives.tsv", function(d){
             gras : +d["gras"],
             glucides : +d["glucides"],
             calories : +d["calories"],
-            image : d["image"]
-    
+            image : d["image"],
+            pts_sodium : +d["pts_sodium"],
+            pts_gras : +d["pts_gras"],
+            pts_glucides : +d["pts_glucides"]
+
         }
     }).then(donnees_acc => {
 
@@ -100,6 +103,13 @@ d3.tsv("valeurs_nutritives.tsv", function(d){
                     }
                     counterCalories += donnees[array[i]].calories
                     caloriesScore.innerHTML = counterCalories
+
+                    counterSodium += donnees[array[i]].pts_sodium
+                    sodiumScore.innerHTML = counterSodium
+                    counterGlucide += donnees[array[i]].pts_glucides
+                    glucidesScore.innerHTML = counterGlucide
+                    counterGras += donnees[array[i]].pts_gras
+                    grasScore.innerHTML = counterGras
                     
                     console.log("counterPeriodeJour",counterPeriodeJour)
                     console.log("counterJour",counterJour)
@@ -143,6 +153,13 @@ d3.tsv("valeurs_nutritives.tsv", function(d){
                     }
                     counterCalories += data[i].calories
                     caloriesScore.innerHTML = counterCalories
+
+                    counterSodium += data[i].pts_sodium
+                    sodiumScore.innerHTML = counterSodium
+                    counterGlucide += data[i].pts_glucides
+                    glucidesScore.innerHTML = counterGlucide
+                    counterGras += data[i].pts_gras
+                    grasScore.innerHTML = counterGras
 
                     // utiliser le compteur de periode par jour pour faire les 3 repas et reinitialiser pour faire un nouveau jour
                     if(counterPeriodeJour == 3){
