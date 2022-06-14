@@ -26,6 +26,7 @@ button{
 
 .nutScoreWrapper{
     font-family: 'Courier New', Courier, monospace;
+    font-size: large;
 }
 
 .nutScoreWrapper::first-letter{

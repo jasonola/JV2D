@@ -1,3 +1,5 @@
+//still to do : better spread of points, figure out how to use calories
+
 // Importer les 2 jeux de données
 d3.tsv("valeurs_nutritives.tsv", function(d){
     return {
