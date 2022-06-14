@@ -72,7 +72,7 @@ d3.tsv("valeurs_nutritives.tsv", function(d){
         // Fonction pour afficher plusieurs images en cartes avec leur comportement
         let show_menus = function(array){
             
-            if(counterGlucide <45){
+            if(counterGlucide <40){
                 Swal.fire({
                     icon: 'error',
                     title: 'GAME OVER',
@@ -141,7 +141,7 @@ d3.tsv("valeurs_nutritives.tsv", function(d){
 
         let show_accomp = function(data){
 
-            if(counterGlucide <45){
+            if(counterGlucide <40){
                 Swal.fire({
                     icon: 'error',
                     title: 'GAME OVER',
@@ -231,9 +231,11 @@ d3.tsv("valeurs_nutritives.tsv", function(d){
             return n; 
             } 
         
+        let instructions = document.querySelector(".instructions")
+
         // Créer le bouton pour commencer le jeu qu'on met dans un div pour ensuite le centrer dans CSS
         let button = document.createElement("button")
-        button.innerHTML = "Start game !"
+        button.innerHTML = "START GAME !"
         button.addEventListener("click", function(){
             counterJour++
             counterPeriodeJour++
@@ -241,6 +243,7 @@ d3.tsv("valeurs_nutritives.tsv", function(d){
             show_menus(randomThreeNum(0,donnees.length))
             //on supprime le bouton apres le click
             button.style.display = "none"
+            instructions.style.display = "none"
         })
         let buttonWrapper = document.createElement("div")
         buttonWrapper.setAttribute("class", "buttonWrapper")

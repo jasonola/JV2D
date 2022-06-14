@@ -5,7 +5,11 @@
 button{
     cursor: pointer;
     height: 50px;
-    width: 100px;
+    width: 150px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    font-size: large;
+    color: cadetblue;
 }
 
 .score{
@@ -100,6 +104,20 @@ h1{
 .swal2-title {
     font-family: 'Courier New', Courier, monospace;
   }
+
+.instructions{
+    font-family: 'Courier New', Courier, monospace;
+    padding: 0px 200px 100px 200px;
+}
+
+a{
+    color:cadetblue;
+    text-decoration: none;
+}
+
+a:hover{
+    text-decoration: underline;
+}
 
 @keyframes fadein {
     from {
