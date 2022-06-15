@@ -70,12 +70,15 @@ d3.tsv("valeurs_nutritives.tsv", function(d){
         let grasScore = document.querySelector("#gras")
         let glucidesScore = document.querySelector("#glucides")
         let nutScoreWrapper = document.querySelector(".nutScoreWrapper")
-        let audio = document.getElementById("school-sound")
+
+        //ajouter musique
+        function playSound(soundfile){
+            document.getElementById("sound").innerHTML="<embed src=\""+soundfile+"\" hidden=\"true\" autostart=\"true\" loop=\"true\"/>";
+        }
 
         // Fonction pour afficher plusieurs images en cartes avec leur comportement
         let show_menus = function(array){
-            let mets = document.querySelector('.mets')
-            mets.innerHTML = 'Plat principal'
+            
             if(counterGlucide <40){
                 Swal.fire({
                     icon: 'error',
@@ -143,9 +146,11 @@ d3.tsv("valeurs_nutritives.tsv", function(d){
             }
         }
 
+
+//-----------------------------------------------------------------------------------------
+
         let show_accomp = function(data){
-            let mets = document.querySelector('.mets')
-            mets.innerHTML = 'Accompagnement'
+
             if(counterGlucide <40){
                 Swal.fire({
                     icon: 'error',
@@ -155,9 +160,6 @@ d3.tsv("valeurs_nutritives.tsv", function(d){
                   }).then(function(){
                     window.location.reload()
                   })
-           
-
-
             }
 
             let choiceWrapper = document.querySelector(".choiceWrapper")
@@ -249,9 +251,6 @@ d3.tsv("valeurs_nutritives.tsv", function(d){
             counterPeriodeJour++
             periode.innerHTML = `Jour ${counterJour}, periode ${counterPeriodeJour}`
             show_menus(randomThreeNum(0,donnees.length))
-            //lancer l'audio 
-            audio.volume = 0.2
-            audio.play()
             //on supprime le bouton apres le click
             button.style.display = "none"
             instructions.style.display = "none"
