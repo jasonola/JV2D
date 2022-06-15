@@ -19,6 +19,13 @@ button{
     justify-items: center;
 }
 
+.mets{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: large;
+    font-weight: bold;
+    text-align: center;
+}
+
 .periode{
     font-family: 'Courier New', Courier, monospace;
     font-weight: bold;

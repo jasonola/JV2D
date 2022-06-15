@@ -70,11 +70,12 @@ d3.tsv("valeurs_nutritives.tsv", function(d){
         let grasScore = document.querySelector("#gras")
         let glucidesScore = document.querySelector("#glucides")
         let nutScoreWrapper = document.querySelector(".nutScoreWrapper")
-
+        let audio = document.getElementById("school-sound")
 
         // Fonction pour afficher plusieurs images en cartes avec leur comportement
         let show_menus = function(array){
-            
+            let mets = document.querySelector('.mets')
+            mets.innerHTML = 'Plat principal'
             if(counterGlucide <40){
                 Swal.fire({
                     icon: 'error',
@@ -143,7 +144,8 @@ d3.tsv("valeurs_nutritives.tsv", function(d){
         }
 
         let show_accomp = function(data){
-        let audio = document.getElementById("school-sound")
+            let mets = document.querySelector('.mets')
+            mets.innerHTML = 'Accompagnement'
             if(counterGlucide <40){
                 Swal.fire({
                     icon: 'error',
@@ -153,9 +155,7 @@ d3.tsv("valeurs_nutritives.tsv", function(d){
                   }).then(function(){
                     window.location.reload()
                   })
-            if(audio){
-                audio.stop()
-            }
+           
 
 
             }
@@ -250,7 +250,6 @@ d3.tsv("valeurs_nutritives.tsv", function(d){
             periode.innerHTML = `Jour ${counterJour}, periode ${counterPeriodeJour}`
             show_menus(randomThreeNum(0,donnees.length))
             //lancer l'audio 
-            let audio = document.getElementById("school-sound")
             audio.volume = 0.2
             audio.play()
             //on supprime le bouton apres le click
