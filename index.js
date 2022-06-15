@@ -71,10 +71,6 @@ d3.tsv("valeurs_nutritives.tsv", function(d){
         let glucidesScore = document.querySelector("#glucides")
         let nutScoreWrapper = document.querySelector(".nutScoreWrapper")
 
-        //ajouter musique
-        function playSound(soundfile){
-            document.getElementById("sound").innerHTML="<embed src=\""+soundfile+"\" hidden=\"true\" autostart=\"true\" loop=\"true\"/>";
-        }
 
         // Fonction pour afficher plusieurs images en cartes avec leur comportement
         let show_menus = function(array){
@@ -147,7 +143,7 @@ d3.tsv("valeurs_nutritives.tsv", function(d){
         }
 
         let show_accomp = function(data){
-
+        let audio = document.getElementById("school-sound")
             if(counterGlucide <40){
                 Swal.fire({
                     icon: 'error',
@@ -157,6 +153,11 @@ d3.tsv("valeurs_nutritives.tsv", function(d){
                   }).then(function(){
                     window.location.reload()
                   })
+            if(audio){
+                audio.stop()
+            }
+
+
             }
 
             let choiceWrapper = document.querySelector(".choiceWrapper")
@@ -248,6 +249,10 @@ d3.tsv("valeurs_nutritives.tsv", function(d){
             counterPeriodeJour++
             periode.innerHTML = `Jour ${counterJour}, periode ${counterPeriodeJour}`
             show_menus(randomThreeNum(0,donnees.length))
+            //lancer l'audio 
+            let audio = document.getElementById("school-sound")
+            audio.volume = 0.2
+            audio.play()
             //on supprime le bouton apres le click
             button.style.display = "none"
             instructions.style.display = "none"
