@@ -76,12 +76,11 @@ d3.tsv("valeurs_nutritives.tsv", function(d){
         let show_menus = function(array){
             let mets = document.querySelector('.mets')
             mets.innerHTML = 'Plat principal'
-            if(counterGlucide <40){
+            if(counterGlucide <20 || counterGras <20 || counterSodium <20 ||
+               counterGlucide >80 || counterGras >80 || counterSodium >80){
                 Swal.fire({
                     icon: 'error',
                     title: 'GAME OVER',
-                    text: 'Pas assez de glucides',
-                    footer: '<a href=url("fr.wikipedia.org/wiki/Glucide")>Sheh</a>'
                   }).then(function(){
                     window.location.reload()
                   })
