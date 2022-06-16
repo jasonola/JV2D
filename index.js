@@ -142,22 +142,20 @@ d3.tsv("valeurs_nutritives.tsv", function(d){
             }
         }
 
+//------------------------------------------------------------------------------------------------------------------
+        
         let show_accomp = function(data){
             let mets = document.querySelector('.mets')
             mets.innerHTML = 'Accompagnement'
-            if(counterGlucide <40){
-                Swal.fire({
-                    icon: 'error',
-                    title: 'GAME OVER',
-                    text: 'Pas assez de glucides',
-                    footer: '<a href="fr.wikipedia.org/wiki/Glucide">Sheh</a>'
-                  }).then(function(){
-                    window.location.reload()
-                  })
-           
-
-
-            }
+            if(counterGlucide <20 || counterGras <20 || counterSodium <20 ||
+                counterGlucide >80 || counterGras >80 || counterSodium >80){
+                 Swal.fire({
+                     icon: 'error',
+                     title: 'GAME OVER',
+                   }).then(function(){
+                     window.location.reload()
+                   })
+             }
 
             let choiceWrapper = document.querySelector(".choiceWrapper")
             for (let i = 0; i < data.length; i++) {
