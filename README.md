@@ -9,3 +9,4 @@ Rules : Stay below 80 and above 20 in the 3 metrics. Calories is just for inform
 So start the game and chose wisely !
 
 To run the project, open the folder in VS Code and go live with Live Server extension.
+To play the game click [here](https://diet-simulator.vercel.app/)
