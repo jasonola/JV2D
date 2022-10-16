@@ -15,8 +15,10 @@ So start the game and chose wisely !
 To run the project, open the folder in VS Code and go live with Live Server extension.
 To play the game click [here](https://diet-simulator.vercel.app/)
 
-## Programming languages
-This project has been made using HTML and Javascripz.
+## Library and programming languages
+This project has been made using HTML, CSS and Javascript. 
+
+We used the library [D3.js](https://d3js.org/) to manipulate the data.
 
 ## Contributing
 Pull requests are welcome. All optimisations of the code are welcome.
