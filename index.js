@@ -1,7 +1,7 @@
 //still to do : better spread of points, figure out how to use calories
 
 // Importer les 2 jeux de données
-d3.tsv("valeurs_nutritives.tsv", function(d){
+d3.tsv("assets/valeurs_nutritives.tsv", function(d){
     return {
         repas : d["titre"],
         sodium : +d["sodium"],
@@ -17,7 +17,7 @@ d3.tsv("valeurs_nutritives.tsv", function(d){
 
     }
 }).then(donnees => {
-    d3.tsv("accompagnant.tsv", function(d){
+    d3.tsv("aassets/ccompagnant.tsv", function(d){
         return {
             accompagnant : d["accompagnant"],
             sodium : +d["sodium"],
@@ -211,7 +211,7 @@ d3.tsv("valeurs_nutritives.tsv", function(d){
                             width: 600,
                             padding: '3em',
                             color: "black",
-                            background: '#fff url(img/picnic.png)'
+                            background: '#fff url(assets/img/picnic.png)'
                           })
                         counterCalories = 0
                         caloriesScore.innerHTML = counterCalories
