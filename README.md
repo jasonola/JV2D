@@ -9,7 +9,7 @@ Stay below 80 and above 20 in the 3 metrics. Calories is just for information to
 
 So start the game and chose wisely !
 
-![During the game](img/game-screenshot.jpg)
+![During the game](assets/img/game-screenshot.jpg)
 
 ## Usage
 To run the project, open the folder in VS Code and go live with Live Server extension.
