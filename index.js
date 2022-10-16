@@ -211,7 +211,7 @@ d3.tsv("valeurs_nutritives.tsv", function(d){
                             width: 600,
                             padding: '3em',
                             color: "black",
-                            background: '#fff url(picnic.png)'
+                            background: '#fff url(img/picnic.png)'
                           })
                         counterCalories = 0
                         caloriesScore.innerHTML = counterCalories
